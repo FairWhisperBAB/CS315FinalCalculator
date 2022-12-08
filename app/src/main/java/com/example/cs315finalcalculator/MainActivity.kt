@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
     var stateError = false
     var lastDot = false
 
+    var saveResult: String? = null
+
     private lateinit var expression: Expression
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         onEqual()
         binding.dataTv.text = binding.resultTv.text.toString().drop(1)
+        binding.dataTv.text = ""
 
     }
 
@@ -38,7 +41,9 @@ class MainActivity : AppCompatActivity() {
         stateError = false
         lastDot = false
         lastNumeric = false
+
         binding.resultTv.visibility = View.GONE
+        binding.btnSave.visibility = View.GONE
 
     }
 
@@ -54,7 +59,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         lastNumeric = true
-        onEqual()
 
     }
 
@@ -65,7 +69,6 @@ class MainActivity : AppCompatActivity() {
             binding.dataTv.append((view as Button).text)
             lastDot = false
             lastNumeric = false
-            onEqual()
 
         }
 
@@ -94,6 +97,26 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun onSaveClick(view: View) {
+
+        saveResult = binding.resultTv.text as String?
+
+        binding.btnPaste.visibility = View.VISIBLE
+
+        binding.btnSave.visibility = View.GONE
+
+    }
+
+    fun onPasteClick(view: View) {
+
+        binding.dataTv.append(saveResult)
+
+        binding.btnPaste.visibility = View.GONE
+
+        lastNumeric = true
+
+    }
+
     fun onEqual() {
 
         if (lastNumeric && !stateError) {
@@ -108,7 +131,7 @@ class MainActivity : AppCompatActivity() {
 
                 binding.resultTv.visibility = View.VISIBLE
 
-                binding.resultTv.text = "= " + result.toString()
+                binding.resultTv.text = result.toString()
             } catch (ex: java.lang.ArithmeticException) {
 
                 Log.e("evaluate error", ex.toString())
@@ -117,6 +140,10 @@ class MainActivity : AppCompatActivity() {
                 lastNumeric = false
             }
         }
+
+        binding.btnSave.visibility = View.VISIBLE
+
+        binding.dataTv.text = ""
 
     }
 
