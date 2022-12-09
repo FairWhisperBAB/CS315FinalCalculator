@@ -1,12 +1,11 @@
-package com.example.cs315finalcalculator
+package com.whacky.cs315finalcalculator
 
-import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import com.example.cs315finalcalculator.databinding.ActivityMainBinding
+import com.whacky.cs315finalcalculator.databinding.ActivityMainBinding
 import net.objecthunter.exp4j.Expression
 import net.objecthunter.exp4j.ExpressionBuilder
 

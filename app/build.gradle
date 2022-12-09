@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.cs315finalcalculator'
+    namespace 'com.whacky.cs315finalcalculator'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.cs315finalcalculator"
+        applicationId "com.whacky.cs315finalcalculator"
         minSdk 24
         targetSdk 32
         versionCode 1

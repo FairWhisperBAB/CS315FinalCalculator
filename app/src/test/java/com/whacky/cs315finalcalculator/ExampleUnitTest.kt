@@ -1,4 +1,4 @@
-package com.example.cs315finalcalculator
+package com.whacky.cs315finalcalculator
 
 import org.junit.Test
 
